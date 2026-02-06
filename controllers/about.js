@@ -1,9 +1,11 @@
 'use strict';
 
+import logger from "../utils/logger.js";
+
 const about = {
   createView(request, response) {
-    response.send('about me app!');   
+    logger.info("About page loading!");
+    response.send('About the Playlist app');   
   },
 };
-
 export default about;

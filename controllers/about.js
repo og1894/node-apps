@@ -5,7 +5,13 @@ import logger from "../utils/logger.js";
 const about = {
   createView(request, response) {
     logger.info("About page loading!");
-    response.send('About the Playlist app');   
+
+    const viewData = {
+      title: "about playlist app"
+    };
+    
+    response.render('about', viewData);
+      
   },
 };
 export default about;

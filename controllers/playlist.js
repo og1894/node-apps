@@ -1,6 +1,7 @@
 'use strict';
 
 import logger from '../utils/logger.js';
+import playlistStore from '../models/playlist-store.js';
 
 const playlist = {
   createView(request, response) {
@@ -8,8 +9,10 @@ const playlist = {
     logger.debug(`Playlist id = ${playlistId}`);
     
     const viewData = {
-      title: 'Playlist'
+      title: 'Playlist',
+      singlePlaylist: playlistStore.getPlaylist(playlistId)
     };
+
     response.render('playlist', viewData);
   },
 };

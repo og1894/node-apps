@@ -5,7 +5,7 @@ import JsonStore from './json-store.js';
 
 const playlistStore = {
 
-  store: new JsonStore('./models/playlist-store.json', { playlistCollection: [] }),
+  store: new JsonStore('./models/playlist.json', { playlistCollection: [] }),
   collection: 'playlistCollection',
   array: 'songs',
 

@@ -16,6 +16,9 @@ const playlistStore = {
   getPlaylist(id) {
     return this.store.findOneBy(this.collection, (playlist => playlist.id === id));
 },
+addPlaylist(playlist) {
+    this.store.addCollection(this.collection, playlist);
+},
 
 };
 

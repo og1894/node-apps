@@ -17,12 +17,15 @@ const dashboard = {
     response.render('dashboard', viewData);
   },
   addPlaylist(request, response) {
-    const newPlayList = {
+    const timestamp = new Date();
+    
+    const newPlaylist = {
       id: uuidv4(),
       title: request.body.title,
-      songs: [],
+	  date: timestamp,
+      songs: []
     };
-    playlistStore.addPlaylist(newPlayList);
+    playlistStore.addPlaylist(newPlaylist);
     response.redirect('/dashboard');
 },
 deletePlaylist(request, response) {

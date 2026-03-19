@@ -16,24 +16,27 @@ const dashboard = {
     logger.debug(viewData.playlists);
     response.render('dashboard', viewData);
   },
+
   addPlaylist(request, response) {
     const timestamp = new Date();
     
     const newPlaylist = {
       id: uuidv4(),
       title: request.body.title,
-	  date: timestamp,
+	    date: timestamp,
       songs: []
     };
+    
     playlistStore.addPlaylist(newPlaylist);
     response.redirect('/dashboard');
-},
-deletePlaylist(request, response) {
+  },
+
+  deletePlaylist(request, response) {
     const playlistId = request.params.id;
     logger.debug(`Deleting Playlist ${playlistId}`);
     playlistStore.removePlaylist(playlistId);
     response.redirect("/dashboard");
-},
+  },
 };
 
 export default dashboard;

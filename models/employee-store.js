@@ -8,7 +8,6 @@ const employeeStore = {
   store: new JsonStore('./models/employee.json', { employees: [] }),
   collection: 'employees',
 
-
   getEmpInfo() {
     return this.store.findAll(this.collection);
   },

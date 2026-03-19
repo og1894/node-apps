@@ -26,9 +26,11 @@ const playlist = {
       title: request.body.title,
       artist: request.body.artist,
     };
+
     playlistStore.addSong(playlistId, newSong);
     response.redirect('/playlist/' + playlistId);
   },
+
   deleteSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;
@@ -36,6 +38,7 @@ const playlist = {
     playlistStore.removeSong(playlistId, songId);
     response.redirect('/playlist/' + playlistId);
   },
+
   updateSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;
@@ -45,10 +48,10 @@ const playlist = {
       title: request.body.title,
       artist: request.body.artist
     };
+
     playlistStore.editSong(playlistId, songId, updatedSong);
     response.redirect('/playlist/' + playlistId);
-}
-
+  },
 };
 
 export default playlist;

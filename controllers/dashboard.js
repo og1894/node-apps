@@ -7,14 +7,21 @@ import playlistStore from "../models/playlist-store.js";
 const dashboard = {
   createView(request, response) {
     logger.info("Dashboard page loading!");
-    
+
+    const searchTerm = request.query.searchTerm || "";
+
+    const playlists = searchTerm
+      ? playlistStore.searchPlaylist(searchTerm)
+      : playlistStore.getAllPlaylists();
+
     const viewData = {
       title: "Playlist App Dashboard",
-      playlists: playlistStore.getAllPlaylists()
+      playlists:  playlists,
+      search: searchTerm
     };
-    
+
     logger.debug(viewData.playlists);
-    response.render('dashboard', viewData);
+    response.render("dashboard", viewData);
   },
 
   addPlaylist(request, response) {

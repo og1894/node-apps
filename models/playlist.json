@@ -1,23 +1,4 @@
 {
   "playlistCollection": [
-    {
-      "id": "cd69b42e-d78a-4c5a-97b1-824fa1edc6c9",
-      "title": "hhh",
-      "rating": 4,
-      "date": "2026-03-18T13:44:35.187Z",
-      "songs": []
-    },
-    {
-      "id": "582ce8f6-f421-4be3-8076-1da42be1f5c7",
-      "title": "jgjgh",
-      "date": "2026-03-19T15:25:31.602Z",
-      "songs": [
-        {
-          "id": "f2f4672e-869f-406c-84f3-d1e0ebeb9746",
-          "title": "hhh",
-          "artist": "jgjg"
-        }
-      ]
-    }
   ]
 }

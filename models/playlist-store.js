@@ -21,9 +21,23 @@ addSong(id, song) {
     this.store.addItem(this.collection, id, this.array, song);
 },
 
-addPlaylist(playlist) {
-    this.store.addCollection(this.collection, playlist);
-},
+addPlaylist(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
+    logger.debug(loggedInUser.id);
+    const timestamp = new Date();
+	
+    const newPlaylist = {
+      userid: loggedInUser.id,
+      id: uuidv4(),
+      title: request.body.title,
+      rating: parseInt(request.body.rating),
+      songs: [],
+      date: timestamp
+    };
+
+    playlistStore.addPlaylist(newPlaylist);
+    response.redirect('/dashboard');
+  },
 
 removeSong(id, songId) {
     this.store.removeItem(this.collection, id, this.array, songId);

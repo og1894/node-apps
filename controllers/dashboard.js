@@ -55,6 +55,36 @@ const dashboard = {
     else response.redirect('/');
 
   },
+
+  addPlaylist(request, response) {
+    const loggedInUser = accounts.getCurrentUser(request);
+    logger.debug(loggedInUser.id);
+    const timestamp = new Date();
+	
+    const newPlaylist = {
+      userid: loggedInUser.id,
+      id: uuidv4(),
+      title: request.body.title,
+      rating: parseInt(request.body.rating),
+      songs: [],
+      date: timestamp
+    };
+
+    playlistStore.addPlaylist(newPlaylist);
+    response.redirect('/dashboard');
+  },
+
+  deletePlaylist(request, response) {
+    const playlistId = request.params.id;
+    const loggedInUser = accounts.getCurrentUser(request);
+    const playlist = playlistStore.getPlaylist(playlistId);
+
+    if (loggedInUser && playlist && playlist.userid === loggedInUser.id) {
+      playlistStore.removePlaylist(playlistId);
+    }
+
+    response.redirect('/dashboard');
+  },
 }
 
 export default dashboard;
